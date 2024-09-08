@@ -56,8 +56,8 @@ class Discriminator(nn.Module):
     
     def forward(self, x, y):
         X = torch.cat([x, y], dim=1)
-        print(X.shape)
+        # print(X.shape)
         X = self.initial(X)
-        print(X.shape)
+        # print(X.shape)
         return self.all(X)
         

@@ -26,12 +26,12 @@ class Generator(nn.Module):
             nn.LeakyReLU(0.2)
         ) # 128
 
-        self.down1 = Block(features, features*2, down=True, act="relu", use_dropout=False) # 64
-        self.down2 = Block(features*2, features*4, down=True, act="relu", use_dropout=False) # 32
-        self.down3 = Block(features*4, features*8, down=True, act="relu", use_dropout=False) # 16
-        self.down4 = Block(features*8, features*8, down=True, act="relu", use_dropout=False) # 8
-        self.down5 = Block(features*8, features*8, down=True, act="relu", use_dropout=False) # 4
-        self.down6 = Block(features*8, features*8, down=True, act="relu", use_dropout=False) # 2
+        self.down1 = Block(features, features*2, down=True, act="leaky", use_dropout=False) # 64
+        self.down2 = Block(features*2, features*4, down=True, act="leaky", use_dropout=False) # 32
+        self.down3 = Block(features*4, features*8, down=True, act="leaky", use_dropout=False) # 16
+        self.down4 = Block(features*8, features*8, down=True, act="leaky", use_dropout=False) # 8
+        self.down5 = Block(features*8, features*8, down=True, act="leaky", use_dropout=False) # 4
+        self.down6 = Block(features*8, features*8, down=True, act="leaky", use_dropout=False) # 2
 
         self.bottleneck = nn.Sequential(
             nn.Conv2d(features*8, features*8, 4, 2, 1, padding_mode="reflect"),
