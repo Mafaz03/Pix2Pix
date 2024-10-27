@@ -73,7 +73,7 @@ def main():
             config.CHECKPOINT_DISC, discriminator, opt_disc, config.LEARNING_RATE,
         )
     
-    train_dataset = MapDataset(root_dir="data/maps/train")
+    train_dataset = MapDataset(root_dir=config.TRAIN_DIR)
     train_loader = DataLoader(train_dataset, batch_size=config.BATCH_SIZE, shuffle=True, num_workers=config.NUM_WORKERS)
 
     g_scaler = torch.amp.GradScaler("cuda")
@@ -92,7 +92,7 @@ def main():
             save_checkpoint(generator, opt_gen, filename=config.CHECKPOINT_GEN)
             save_checkpoint(discriminator, opt_disc, filename=config.CHECKPOINT_DISC)
         print("here")
-        save_some_examples(generator, val_loader, epoch, folder="evaluation")
+        save_some_examples(generator, val_loader, epoch, folder="evaluation_2")
 
 
 if __name__ == "__main__":
